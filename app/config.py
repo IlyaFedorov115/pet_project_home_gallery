@@ -1,6 +1,12 @@
 import os
 
 class Config(object):
+
+    APPNAME = 'app'
+    ROOT = os.path.abspath(APPNAME) # /home/git/pet...
+    UPLOAD_PATH = '/static/upload/'
+    SERVER_PATH = ROOT + UPLOAD_PATH
+
     USER = os.environ.get('POSTGRES_USER', 'pet_role')
     PASSWORD = os.environ.get('POSTGRES_PASSWORD', 'pet_role')
     HOST = os.environ.get('POSTGRES_HOST', '127.0.0.1')

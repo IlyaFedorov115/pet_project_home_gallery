@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %} 
+
+{% block page_title %} Все темы таблица {% endblock %}
+
+{% block style %} 
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blocks/table.css') }}"> 
+
+{% endblock %}
+
+{% block content %}
+<div class="table-responsive custom-table-responsive">
+<!-- <table class="table-responsive custom-table-responsive"> -->
+<table class="table custom-talble">
+    <thead>
+        <tr>
+            <th scope="col">Преподаватель</th>
+            <th scope="col">Предмет</th>
+            <th scope="col">Студент</th>
+            <th scope="col">Действие</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr scope="row">
+            <td>{{ post.teacher }}</td>
+            <td>{{ post.subject }}</td>
+            <td>{{ post.student }}</td>
+            <td>
+                <a href="{{ url_for('post.update', id=post.id) }}" class="btn btn-sm btn-secondary"><span class="fa-solid fa-pen-to-square"></span></a>
+                <a href="{{ url_for('post.delete', id=post.id) }}" class="btn btn-sm btn-danger"><span class="fa-solid fa-trash"></span></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{url_for('static', filename='css/libs/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+
+    {% block style %} {% endblock %}
+
     <title>{% block title %}Base{% endblock %}</title>
 </head>
 
 
 <body>
-    <header class="header"> {% include 'main/_header.html' %} </header>
     
     <div class="page">
+
+    <header class="header"> {% include 'main/_header.html' %} </header>
+
+    
+
     <main class="content">
+        {% include 'main/_flash.html' %}
         {% block page_title %}  {% endblock %}
         {% block content %} Base content  {% endblock %}
     </main>
